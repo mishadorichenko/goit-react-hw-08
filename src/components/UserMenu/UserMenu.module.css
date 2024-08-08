@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.username {
+  font-size: 12px;
+  font-weight: 700;
+  color: #85c9e6;
+}
+
+.button {
+  display: block;
+  padding: 10px;
+  background-color: #c52c2c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #c55b05;
+}
+@media screen and (min-width: 656px) {
+  .username {
+    font-size: 16px;
+  }
+}

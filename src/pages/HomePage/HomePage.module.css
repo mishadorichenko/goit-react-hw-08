@@ -1,0 +1,20 @@
+.container {
+  min-height: calc(100vh - 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 48px;
+  text-align: center;
+}
+.icon {
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  fill: rgb(235, 235, 25);
+  background-color: rgb(6, 6, 161);
+  margin-right: 20px;
+}

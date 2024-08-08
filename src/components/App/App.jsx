@@ -1,31 +1,70 @@
 import './App.css';
-import ContactForm from '../ContactForm/ContactForm';
-import SearchBox from '../SearchBox/SearchBox';
-import ContactList from '../ContactList/ContactList';
-import Loader from '../Loader/Loader';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectLoading } from '../../redux/contactsSlice';
-import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/contactsOps';
+import { lazy, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from '../PrivateRoute';
+import RestrictedRoute from '../RestrictedRoute';
+import { refreshUser } from '../../redux/auth/operations';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
+import Layout from '../Layout/Layout';
+import { Toaster } from 'react-hot-toast';
+import Loader from '../Loader/Loader';
+
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const RegisterPage = lazy(() =>
+  import('../../pages/RegistrationPage/RegistrationPage')
+);
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
+const ContactsPage = lazy(() =>
+  import('../../pages/ContactsPage/ContactsPage')
+);
 
 function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectLoading);
-  const isError = useSelector(selectError);
+
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <div className="loader">
+      <Loader />
+    </div>
+  ) : (
     <>
-      <h1 className="title"> Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {isLoading && !isError && <Loader />}
-      {isError && <ErrorMessage />}
-      <ContactList />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
+          />
+        </Route>
+      </Routes>
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 }
