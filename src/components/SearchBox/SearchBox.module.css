@@ -1,7 +1,19 @@
 .container {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50vw;
+  margin: 0 auto 20px;
+  color: #ffffff;
+  background-color: #6e6e6e;
 }
 
-.container > p {
-  font-size: 20px;
+input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #baff39;
+  background-color: #ffffff;
+  color: #6e6e6e;
 }

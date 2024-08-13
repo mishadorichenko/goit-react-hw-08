@@ -1,49 +1,47 @@
 .formContainer {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  background-color: #9c9079;
-  max-width: 500px;
-  height: 350px;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 40vw;
+  /* max-width: 500px; */
   padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #6e6e6e;
+
+  margin: 0 auto;
 }
 
 .label {
-  color: #312e2e;
-  display: block;
   margin-bottom: 5px;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
 }
 
 .inputField {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.wrap {
-  height: 60px;
-  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #baff39;
+  background-color: #ffffff;
+  color: #6e6e6e;
 }
 
 .errorMessage {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
+  color: #ff0000;
 }
 
 .submitButton {
-  display: block;
-  padding: 10px 30px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #baff39;
   border: none;
-  border-radius: 4px;
+  color: #6e6e6e;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .submitButton:hover {
-  background-color: #0056b3;
+  background-color: #a4e633;
 }

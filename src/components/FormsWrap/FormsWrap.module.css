@@ -1,4 +1,11 @@
-.container {
-  max-width: 960;
-  margin: 0 auto;
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 40vw;
+  margin: 0 auto 20px;
+
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #6e6e6e;
 }

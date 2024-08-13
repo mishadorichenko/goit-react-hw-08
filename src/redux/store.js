@@ -28,7 +28,7 @@ export const store = configureStore({
     filters: filterReducer,
     auth: persistAuthReducer,
   },
-  /* обов'язково шоб ігнорувати помилки */
+
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

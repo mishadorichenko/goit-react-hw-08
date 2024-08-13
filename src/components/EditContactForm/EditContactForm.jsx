@@ -11,7 +11,6 @@ import {
   selectIsModalOpen,
 } from '../../redux/contacts/selectors';
 import { clearActiveContactId, toggleModal } from '../../redux/contacts/slice';
-import { handleKeyPress } from '../../handleKeyPress';
 
 import css from './EditContactForm.module.css';
 
@@ -37,15 +36,11 @@ function EditContactForm() {
   const activeContact =
     contacts.find(contact => contact.id === activeContactId) || {};
 
-  const handleCancel = () => {
-    dispatch(toggleModal());
-  };
-
   const handleSubmit = (values, actions) => {
     dispatch(
       editContact({
         id: activeContactId,
-        name: values.username,
+        name: values.name,
         number: values.number,
       })
     )
@@ -55,12 +50,17 @@ function EditContactForm() {
         dispatch(clearActiveContactId());
         dispatch(toggleModal());
       })
-      .catch(() => {
+      .catch(error => {
+        console.log('Update failed:', error);
         toast.error('Error, input correct data', {
           position: 'top-center',
         });
       });
     actions.resetForm();
+  };
+
+  const handleCancel = () => {
+    dispatch(toggleModal());
   };
 
   return (
@@ -78,20 +78,20 @@ function EditContactForm() {
         validationSchema={UserAddSchema}
         onSubmit={handleSubmit}
       >
-        {({ setFieldValue }) => (
+        {() => (
           <Form className={css.formContainer}>
             <label htmlFor={nameFieldId} className={css.label}>
-              Username
+              Contact name
             </label>
             <div className={css.wrap}>
               <Field
                 type="text"
-                name="username"
+                name="name"
                 id={nameFieldId}
                 className={css.inputField}
               />
               <ErrorMessage
-                name="username"
+                name="name"
                 component="span"
                 className={css.errorMessage}
               />
@@ -103,14 +103,9 @@ function EditContactForm() {
             <div className={css.wrap}>
               <Field
                 type="text"
-                onKeyPress={handleKeyPress}
                 name="number"
                 id={phoneFieldId}
                 className={css.inputField}
-                onChange={event => {
-                  const formattedPhoneNumber = event.target.value;
-                  setFieldValue('number', formattedPhoneNumber);
-                }}
               />
               <ErrorMessage
                 name="number"

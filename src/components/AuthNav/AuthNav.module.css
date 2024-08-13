@@ -1,0 +1,12 @@
+.link {
+  text-decoration: none;
+  color: #baff39;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.active {
+  /* border-bottom: 2px solid #baff39; */
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

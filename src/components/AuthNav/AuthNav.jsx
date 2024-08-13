@@ -12,7 +12,9 @@ function AuthNav() {
       <NavLink className={getLinkClass} to="/register">
         Register
       </NavLink>
-      <NavLink className={getLinkClass}>Log in</NavLink>
+      <NavLink className={getLinkClass} to="/login">
+        Log in
+      </NavLink>
     </div>
   );
 }

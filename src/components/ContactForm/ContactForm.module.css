@@ -1,11 +1,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  max-width: 265px;
-  padding: 5px;
-  border: 2px solid #000;
-  border-radius: 8px;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #6e6e6e;
 }
 
 .formItem {
@@ -14,5 +14,18 @@
 }
 
 .error {
-  color: crimson;
+  color: #ff0000;
+}
+
+button {
+  background-color: #baff39;
+  border: none;
+  color: #6e6e6e;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a4e633;
 }

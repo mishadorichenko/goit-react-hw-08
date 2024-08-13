@@ -14,6 +14,7 @@ const contactsSlice = createSlice({
     isLoading: false,
     error: false,
     isModalOpen: false,
+    activeContactId: null,
   },
   reducers: {
     toggleModal(state) {
@@ -72,14 +73,15 @@ const contactsSlice = createSlice({
       })
       .addCase(editContact.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
-        const index = state.items
-          .findIndex(contact => contact.id === action.payload.id)
-          .addCase(editContact.rejected, state => {
-            state.isLoading = false;
-            state.error = true;
-          });
+        state.error = false;
+        const index = state.items.findIndex(
+          contact => contact.id === action.payload.id
+        );
         state.items[index] = action.payload;
+      })
+      .addCase(editContact.rejected, state => {
+        state.isLoading = false;
+        state.error = true;
       })
       .addCase(logOut.fulfilled, state => {
         state.items = [];

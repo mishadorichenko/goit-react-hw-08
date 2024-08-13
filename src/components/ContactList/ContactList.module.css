@@ -1,5 +1,8 @@
 .contactsList {
+  list-style: none;
+  padding: 20px;
   display: flex;
-  gap: 10px;
+  flex-direction: row;
   flex-wrap: wrap;
+  gap: 10px;
 }

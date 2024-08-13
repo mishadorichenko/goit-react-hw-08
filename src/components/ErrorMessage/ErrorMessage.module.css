@@ -1,3 +1,7 @@
 .errorContainer {
-  color: orangered;
+  padding: 20px;
+  background-color: #6e6e6e;
+  border-radius: 10px;
+  color: #ffffff;
+  text-align: center;
 }

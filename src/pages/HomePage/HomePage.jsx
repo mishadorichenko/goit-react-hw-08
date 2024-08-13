@@ -7,7 +7,7 @@ function HomePage() {
         <span role="img" aria-label="Greeting icon">
           📒
         </span>
-        Contact Book welcome page{' '}
+        Book for your contacts{' '}
         <span role="img" aria-label="Greeting icon">
           💁‍♀️
         </span>
